@@ -59,7 +59,7 @@ class Media extends AbstractHelper
     {
         $this->mediaPath = $this->directoryList->getPath('media') . '/catalog/product/';
 
-        $imageConfig = $this->getImageConfig();
+        $this->getImageConfig();
 
         // clean up empty fields
         foreach ($this->imageConfig['fields'] as $field => $values) {
