@@ -70,7 +70,7 @@ class Media extends AbstractHelper
 
         // build import folder
         $importFolder = $currentImportFolder . '/';
-        $value = trim($imageConfig->getValue('pimgento/image/path'));
+        $value = trim($this->scopeConfig->getValue('pimgento/image/path'));
         if ($value) {
             $importFolder.= $value.'/';
         }
@@ -86,7 +86,7 @@ class Media extends AbstractHelper
      */
     public function getImageConfig()
     {
-        if (!$this->imageConfig) {
+        if (empty($this->imageConfig)) {
             $this->imageConfig = [
                 'fields' => [
                     'base_image' => [
