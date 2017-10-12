@@ -93,7 +93,13 @@ class UrlRewrite extends AbstractHelper
         $tmpTable           = $this->_entities->getTableName($code);
         $tmpUrlRewriteTable = $resource->getTable('tmp_pimgento_rewrite');
         $urlRewriteTable    = $resource->getTable('url_rewrite');
+
+        if ($code === 'variant'){
+            $code = 'product';
+        }
+
         $targetPathExpr     = new Expr('CONCAT("catalog/' . $code . '/view/id/", `_entity_id`)');
+
 
         // Fill temporary url table
         $values = [
@@ -122,6 +128,7 @@ class UrlRewrite extends AbstractHelper
             )
             ->where('`t`.`' . $column . '` <> ""')
             ->where('`t`.`' . $column . '` NOT LIKE "%' . \Pimgento\Entities\Model\ResourceModel\Entities::IGNORE_VALUE . '%"');
+
 
         $connection->query(
             $query = $connection->insertFromSelect(

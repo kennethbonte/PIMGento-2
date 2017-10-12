@@ -154,14 +154,18 @@ class Entities extends AbstractModel implements EntitiesInterface, IdentityInter
      * @param string $prefix
      * @return $this
      */
-    public function matchEntity($tableSuffix, $pimKey, $entityTable, $entityKey, $prefix = null)
+    public function matchEntity($tableSuffix, $pimKey, $entityTable, $entityKey, $prefix = null, $importType = null)
     {
+        if(!$importType){
+            $importType = $tableSuffix;
+        }
+
         $this->_getResource()->matchEntity(
             $this->getTableName($tableSuffix),
             $pimKey,
             $entityTable,
             $entityKey,
-            $tableSuffix,
+            $importType,
             $prefix
         );
 

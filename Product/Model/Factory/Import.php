@@ -1144,6 +1144,7 @@ class Import extends Factory
                 }
             }
 
+
             $this->_media->mediaCleanValues();
             $this->_media->mediaRemoveUnknownFiles();
             $this->_media->mediaCopyFiles();
